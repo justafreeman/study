@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://www.origamid.com/slide/javascript-completo-es6/#/0409-object/1 -->
+<html lang="en" class="notfullscreen" coupert-item="9AF8D9A4E502F3784AD24272D81F0381"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>0409-object</title>
+  <link rel="stylesheet" href="./0408-function_files/style.css">
+<style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style></head>
+
+<body>
+
+  <div class="origamid-head">
+    <svg class="origamid-logo" xmlns="http://www.w3.org/2000/svg" width="144" height="25" viewBox="0 0 144 25">
+      <path class="origamid-letter" fill="#FFF" d="M12.3 24.6C5.5 24.6 0 19.1 0 12.3 0 5.4 5.5 0 12.3 0c6.9 0 12.3 5.5 12.3 12.4 0 6.7-5.5 12.2-12.3 12.2zm0-21.4c-3.7 0-6.6 2-8 5.3-.5 1.2-.8 2.5-.8 3.8 0 1.3.3 2.6.8 3.8 1.5 3.3 4.4 5.3 8 5.3 3.9 0 6.9-2.2 8.3-5.9.4-1 .6-2.1.6-3.2 0-4.9-3.7-9.1-8.9-9.1zm27 11.6c-.7.3-1.5.4-2.3.4l6.6 8.8h-4.3l-7.8-11h-.1v11H28V.4h7.3c2.2 0 4.6.4 6.3 2C43.1 3.9 43.8 6 43.8 8c0 3.2-1.4 5.8-4.5 6.8zM35.1 3.6h-3.6v9.1h2.4c3.1 0 6.5-.9 6.5-4.6 0-3.1-2.5-4.5-5.3-4.5zM47 24.1V.4h3.5v23.7zM108.7 24.1v-20h-.1l-8 20h-2.1l-8-20h-.1v20H87V.4h5.4l7.1 18.1L106.6.4h5.4v23.7zM116 24.1V.4h3.5v23.7zM140.1 20.7c-2.6 2.6-5.7 3.4-9.2 3.4h-7.6V.4h7.7c3.8 0 7.4 1.2 9.7 4.4 1.5 2.1 2.4 4.9 2.4 7.6 0 2.7-1 6.3-3 8.3zm-1.1-12c-1.4-3.4-4.3-5.1-8-5.1h-4.2V21h4.1c5.4 0 8.7-3.1 8.7-8.6.1-1.3-.2-2.5-.6-3.7z"></path>
+      <path class="origamid-g" fill="#A494F5" d="M63.4 15.8v-3.2h16.2v1.5c-1 5.1-4.6 10.3-12.6 10.5h-.5c-1.282 0-2.481-.168-3.596-.504l-.004.004c-5.5-1.6-8.7-6.7-8.7-11.7C54 5.3 59.4 0 66.1 0c4 0 6.8 1.2 9.2 3.4l-2 2.7c-1-1.1-3.6-2.9-7.1-2.9-4.8 0-8.8 3.8-8.8 9.2 0 4.484 3.277 7.975 7.06 8.89l.04.01 4.3-.1c.142-.033.284-.068.425-.106 2.455-.663 4.846-2.174 6.075-5.294H63.4z"></path>
+      <path class="origamid-letter" fill="#FFF" d="M66.5 24.6h.5L79.5 4.9h.1v19.2h3.5V.4h-4.3C73.401 8.265 68.09 16.198 62.6 24c.1.034.202.066.304.096 1.115.336 2.313.504 3.596.504z"></path>
+    </svg>
+    <button class="toggle-full"></button>
+    <button class="toggle-tiny"></button>
+  </div>
+
+  <div class="curso-nav">
+    <ul>
+      <li>
+        <span>JavaScript Completo ES6+</span>
+        <ul>
+          <li class="aula"><a data-modulo="01-javascript-completo-es6" data-aula="0101-javascript-completo-es6" href="https://www.origamid.com/slide/javascript-completo-es6/#">O Curso <span>0101</span></a></li>
+          <li class="aula"><a data-modulo="01-javascript-completo-es6" data-aula="0102-a-linguagem" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">A Linguagem <span>0102</span></a></li>
+          <li class="aula"><a data-modulo="01-javascript-completo-es6" data-aula="0103-vscode-node-e-git" href="https://www.origamid.com/slide/javascript-completo-es6/#">VSCode, Node e Git <span>0103</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <span>JavaScript para Iniciantes</span>
+        <ul>
+          <li class="aula"><a data-modulo="02-javascript-para-iniciantes" data-aula="0201-variaveis" href="https://www.origamid.com/slide/javascript-completo-es6/#">Variáveis <span>0201</span></a></li>
+          <li class="aula"><a data-modulo="02-javascript-para-iniciantes" data-aula="0202-tipos-de-dados" href="https://www.origamid.com/slide/javascript-completo-es6/#">Tipos de Dados <span>0202</span></a></li>
+          <li class="aula"><a data-modulo="02-javascript-para-iniciantes" data-aula="0203-numeros-e-operadores" href="https://www.origamid.com/slide/javascript-completo-es6/#">Números e Operadores <span>0203</span></a></li>
+          <li class="aula"><a data-modulo="02-javascript-para-iniciantes" data-aula="0204-boolean-e-condicionais" href="https://www.origamid.com/slide/javascript-completo-es6/#">Boolean e Condicionais <span>0204</span></a></li>
+          <li class="aula"><a data-modulo="02-javascript-para-iniciantes" data-aula="0205-funcoes" href="https://www.origamid.com/slide/javascript-completo-es6/#">Funções <span>0205</span></a></li>
+          <li class="aula"><a data-modulo="02-javascript-para-iniciantes" data-aula="0206-objetos" href="https://www.origamid.com/slide/javascript-completo-es6/#">Objetos <span>0206</span></a></li>
+          <li class="aula"><a data-modulo="02-javascript-para-iniciantes" data-aula="0207-tudo-e-objeto" href="https://www.origamid.com/slide/javascript-completo-es6/#">Tudo é Objeto <span>0207</span></a></li>
+          <li class="aula"><a data-modulo="02-javascript-para-iniciantes" data-aula="0208-arrays-e-loops" href="https://www.origamid.com/slide/javascript-completo-es6/#">Arrays e Loops <span>0208</span></a></li>
+          <li class="aula"><a data-modulo="02-javascript-para-iniciantes" data-aula="0209-atribuicao-e-ternario" href="https://www.origamid.com/slide/javascript-completo-es6/#">Atribuição e Ternário <span>0209</span></a></li>
+          <li class="aula"><a data-modulo="02-javascript-para-iniciantes" data-aula="0210-escopo" href="https://www.origamid.com/slide/javascript-completo-es6/#">Escopo <span>0210</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <span>DOM para Iniciantes</span>
+        <ul>
+          <li class="aula"><a data-modulo="03-dom-para-iniciantes" data-aula="0301-o-que-e-o-dom" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">O que é o DOM <span>0301</span></a></li>
+          <li class="aula"><a data-modulo="03-dom-para-iniciantes" data-aula="0303-selecao-de-elementos" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">Seleção de Elementos <span>0303</span></a></li>
+          <li class="aula"><a data-modulo="03-dom-para-iniciantes" data-aula="0304-foreach-e-arrow-function" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">forEach e Arrow Function <span>0304</span></a></li>
+          <li class="aula"><a data-modulo="03-dom-para-iniciantes" data-aula="0305-classes-e-atributos" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">Classes e Atributos <span>0305</span></a></li>
+          <li class="aula"><a data-modulo="03-dom-para-iniciantes" data-aula="0306-dimensoes-e-distancias" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">Dimensões e Distâncias <span>0306</span></a></li>
+          <li class="aula"><a data-modulo="03-dom-para-iniciantes" data-aula="0307-eventos" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">Eventos <span>0307</span></a></li>
+          <li class="aula"><a data-modulo="03-dom-para-iniciantes" data-aula="0308-traversing-e-manipulacao" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">Traversing e Manipulação <span>0308</span></a></li>
+          <li class="aula"><a data-modulo="03-dom-para-iniciantes" data-aula="0309-navegacao-por-tabs" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">Navegação por Tabs <span>0309</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Objetos</span>
+        <ul>
+          <li class="aula"><a data-modulo="04-objetos" data-aula="0401-constructor-function" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">Constructor Function <span>0401</span></a></li>
+          <li class="aula"><a data-modulo="04-objetos" data-aula="0402-prototype" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">Prototype <span>0402</span></a></li>
+          <li class="aula"><a data-modulo="04-objetos" data-aula="0403-native-host-e-user" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">Native, Host e User <span>0403</span></a></li>
+          <li class="aula"><a data-modulo="04-objetos" data-aula="0404-string" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">String <span>0404</span></a></li>
+          <li class="aula"><a data-modulo="04-objetos" data-aula="0405-number-e-math" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">Number e Math <span>0405</span></a></li>
+          <li class="aula"><a data-modulo="04-objetos" data-aula="0406-array" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">Array <span>0406</span></a></li>
+          <li class="aula"><a data-modulo="04-objetos" data-aula="0407-array-e-iteracao" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">Array e Iteração <span>0407</span></a></li>
+          <li class="aula"><a data-modulo="04-objetos" data-aula="0408-function" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="">Function <span>0408</span></a></li>
+          <li class="aula"><a data-modulo="04-objetos" data-aula="0409-object" href="https://www.origamid.com/slide/javascript-completo-es6/#" class="active">Object <span>0409</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Efeitos no DOM</span>
+        <ul>
+          <li class="aula"><a data-modulo="05-efeitos-no-dom" data-aula="0501-dataset" href="https://www.origamid.com/slide/javascript-completo-es6/#">Dataset <span>0501</span></a></li>
+          <li class="aula"><a data-modulo="05-efeitos-no-dom" data-aula="0502-modules" href="https://www.origamid.com/slide/javascript-completo-es6/#">Modules <span>0502</span></a></li>
+          <li class="aula"><a data-modulo="05-efeitos-no-dom" data-aula="0506-event-bubble" href="https://www.origamid.com/slide/javascript-completo-es6/#">Event Bubble <span>0506</span></a></li>
+          <li class="aula"><a data-modulo="05-efeitos-no-dom" data-aula="0508-settimeout-e-setinterval" href="https://www.origamid.com/slide/javascript-completo-es6/#">setTimeout e setInterval <span>0508</span></a></li>
+          <li class="aula"><a data-modulo="05-efeitos-no-dom" data-aula="0511-date-object" href="https://www.origamid.com/slide/javascript-completo-es6/#">Date Object <span>0511</span></a></li>
+          <li class="aula"><a data-modulo="05-efeitos-no-dom" data-aula="0512-forms" href="https://www.origamid.com/slide/javascript-completo-es6/#">Forms <span>0512</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <span>JavaScript Assíncrono</span>
+        <ul>
+          <li class="aula"><a data-modulo="06-javascript-assincrono" data-aula="0601-javascript-assincrono" href="https://www.origamid.com/slide/javascript-completo-es6/#">JavaScript Assíncrono <span>0601</span></a></li>
+          <li class="aula"><a data-modulo="06-javascript-assincrono" data-aula="0602-promises" href="https://www.origamid.com/slide/javascript-completo-es6/#">Promises <span>0602</span></a></li>
+          <li class="aula"><a data-modulo="06-javascript-assincrono" data-aula="0603-fetch" href="https://www.origamid.com/slide/javascript-completo-es6/#">Fetch <span>0603</span></a></li>
+          <li class="aula"><a data-modulo="06-javascript-assincrono" data-aula="0604-json" href="https://www.origamid.com/slide/javascript-completo-es6/#">JSON <span>0604</span></a></li>
+          <li class="aula"><a data-modulo="06-javascript-assincrono" data-aula="0605-api-e-http" href="https://www.origamid.com/slide/javascript-completo-es6/#">API e HTTP <span>0605</span></a></li>
+          <li class="aula"><a data-modulo="06-javascript-assincrono" data-aula="0606-async-await" href="https://www.origamid.com/slide/javascript-completo-es6/#">Async Await <span>0606</span></a></li>
+          <li class="aula"><a data-modulo="06-javascript-assincrono" data-aula="0607-history-api" href="https://www.origamid.com/slide/javascript-completo-es6/#">History API <span>0607</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Classes</span>
+        <ul>
+          <li class="aula"><a data-modulo="07-classes" data-aula="0701-classes" href="https://www.origamid.com/slide/javascript-completo-es6/#">Classes <span>0701</span></a></li>
+          <li class="aula"><a data-modulo="07-classes" data-aula="0702-get-e-set" href="https://www.origamid.com/slide/javascript-completo-es6/#">Get e Set <span>0702</span></a></li>
+          <li class="aula"><a data-modulo="07-classes" data-aula="0703-extends" href="https://www.origamid.com/slide/javascript-completo-es6/#">Extends <span>0703</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Mais JavaScript</span>
+        <ul>
+          <li class="aula"><a data-modulo="08-mais-javascript" data-aula="0801-function-expression" href="https://www.origamid.com/slide/javascript-completo-es6/#">Function Expression <span>0801</span></a></li>
+          <li class="aula"><a data-modulo="08-mais-javascript" data-aula="0802-factory-function" href="https://www.origamid.com/slide/javascript-completo-es6/#">Factory Function <span>0802</span></a></li>
+          <li class="aula"><a data-modulo="08-mais-javascript" data-aula="0803-closures-e-debugging" href="https://www.origamid.com/slide/javascript-completo-es6/#">Closures e Debugging <span>0803</span></a></li>
+          <li class="aula"><a data-modulo="08-mais-javascript" data-aula="0804-destructuring" href="https://www.origamid.com/slide/javascript-completo-es6/#">Destructuring <span>0804</span></a></li>
+          <li class="aula"><a data-modulo="08-mais-javascript" data-aula="0805-rest-e-spread" href="https://www.origamid.com/slide/javascript-completo-es6/#">Rest e Spread <span>0805</span></a></li>
+          <li class="aula"><a data-modulo="08-mais-javascript" data-aula="0806-loops-e-iterable" href="https://www.origamid.com/slide/javascript-completo-es6/#">Loops e Iterable <span>0806</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Regular Expression</span>
+        <ul>
+          <li class="aula"><a data-modulo="09-regular-expression" data-aula="0901-regexp-selecao" href="https://www.origamid.com/slide/javascript-completo-es6/#">Regexp Seleção <span>0901</span></a></li>
+          <li class="aula"><a data-modulo="09-regular-expression" data-aula="0902-regexp-substituicao" href="https://www.origamid.com/slide/javascript-completo-es6/#">Regexp Substituição <span>0902</span></a></li>
+          <li class="aula"><a data-modulo="09-regular-expression" data-aula="0903-regexp-padroes" href="https://www.origamid.com/slide/javascript-completo-es6/#">Regexp Padrões <span>0903</span></a></li>
+          <li class="aula"><a data-modulo="09-regular-expression" data-aula="0904-regexp-metodos" href="https://www.origamid.com/slide/javascript-completo-es6/#">Regexp Métodos <span>0904</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Automação Front End</span>
+        <ul>
+          <li class="aula"><a data-modulo="10-automacao-front-end" data-aula="1001-linha-de-comando" href="https://www.origamid.com/slide/javascript-completo-es6/#">Linha de Comando <span>1001</span></a></li>
+          <li class="aula"><a data-modulo="10-automacao-front-end" data-aula="1002-npm" href="https://www.origamid.com/slide/javascript-completo-es6/#">NPM <span>1002</span></a></li>
+          <li class="aula"><a data-modulo="10-automacao-front-end" data-aula="1003-eslint" href="https://www.origamid.com/slide/javascript-completo-es6/#">ESLint <span>1003</span></a></li>
+          <li class="aula"><a data-modulo="10-automacao-front-end" data-aula="1004-webpack" href="https://www.origamid.com/slide/javascript-completo-es6/#">Webpack <span>1004</span></a></li>
+          <li class="aula"><a data-modulo="10-automacao-front-end" data-aula="1005-babel" href="https://www.origamid.com/slide/javascript-completo-es6/#">Babel <span>1005</span></a></li>
+          <li class="aula"><a data-modulo="10-automacao-front-end" data-aula="1006-git" href="https://www.origamid.com/slide/javascript-completo-es6/#">Git <span>1006</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Considerações Finais</span>
+        <ul>
+          <li class="aula"><a data-modulo="13-consideracoes-finais" data-aula="1301-javascript-completo-es6-conclusao" href="https://www.origamid.com/slide/javascript-completo-es6/#">Conclusão <span>1301</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="wrapper">
+    <div class="md" id="md"><section class="capa" data-slide="1"><div><h1>Objetos</h1>
+<p>Object</p>
+</div></section>
+<section data-slide="2"><div><h2>Object</h2>
+<p>Todo objeto é criado com o construtor Object e por isso herda as propriedades e métodos do seu prototype.</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> carro <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token object-property">marca:</span> <span class="token string">'Ford'</span><span class="token punctuation">,</span>
+  <span class="token object-property">ano:</span> <span class="token float">2018</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> pessoa <span class="token operator">=</span> <span class="token new">new</span> <span class="token function">Object</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token object-property">nome:</span> <span class="token string">'André'</span><span class="token punctuation">,</span>
+  <span class="token object-property">idade:</span> <span class="token float">28</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section>
+<section data-slide="3"><div><h2>Métodos de Object</h2>
+<p><code>Object.create(obj, defineProperties)</code> retorna um novo objeto que terá como protótipo o objeto do primeiro argumento.</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> carro <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token object-property">rodas:</span> <span class="token float">4</span><span class="token punctuation">,</span>
+  <span class="token function">init</span><span class="token punctuation">(</span>marca<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token property">.marca</span> <span class="token operator">=</span> marca<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">acelerar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>marca<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> acelerou as </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>rodas<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> rodas`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">buzinar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token property">.marca</span> <span class="token operator">+</span> <span class="token string">' buzinou'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> honda <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>carro<span class="token punctuation">)</span><span class="token punctuation">;</span>
+honda<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token string">'Honda'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">acelerar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section>
+<section data-slide="4"><div><h2>Object.assign()</h2>
+<p><code>Object.assign(alvo, obj1, obj2)</code> adiciona ao alvo as propriedades e métodos enumeráveis dos demais objetos. O assign irá modificar o objeto alvo.</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> funcaoAutomovel <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">acelerar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">'acelerou'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">buzinar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">'buzinou'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> moto <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token object-property">rodas:</span> <span class="token float">2</span><span class="token punctuation">,</span>
+  <span class="token object-property">capacete:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> carro <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token object-property">rodas:</span> <span class="token float">4</span><span class="token punctuation">,</span>
+  <span class="token object-property">mala:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>moto<span class="token punctuation">,</span> funcaoAutomovel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>carro<span class="token punctuation">,</span> funcaoAutomovel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section>
+<section data-slide="5"><div><h2>Object.defineProperties()</h2>
+<p><code>Object.defineProperties(alvo, propriedades)</code> adiciona ao alvo novas propriedades. A diferença aqui é a possibilidade de serem definidas as características dessas propriedades.</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> moto <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+Object<span class="token punctuation">.</span><span class="token function">defineProperties</span><span class="token punctuation">(</span>moto<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token object-property">rodas:</span> <span class="token punctuation">{</span>
+    <span class="token object-property">value:</span> <span class="token float">2</span><span class="token punctuation">,</span>
+    <span class="token object-property">configurable:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// impede deletar e mudança de valor</span>
+    <span class="token object-property">enumarable:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// torna enumerável</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token object-property">capacete:</span> <span class="token punctuation">{</span>
+    <span class="token object-property">value:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token object-property">configurable:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token object-property">writable:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// impede mudança de valor</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+moto<span class="token property">.rodas</span> <span class="token operator">=</span> <span class="token float">4</span><span class="token punctuation">;</span>
+<span class="token keyword">delete</span> moto<span class="token property">.capacete</span><span class="token punctuation">;</span>
+moto<span class="token punctuation">;</span>
+<span class="token comment">// {rodas: 2}</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+<blockquote>
+<p>Existe também o Object.defineProperty, para uma propriedade única.</p>
+</blockquote>
+</div></section>
+<section data-slide="6"><div><h2>get e set</h2>
+<p>É possível definirmos diferentes comportamentos para get e set de uma propriedade. Lembrando que ao acionarmos uma propriedade <code>obj.propriedade</code>, a função get é ativada e ao setarmos <code>ob.propriedade = 'Valor'</code> a função de set é ativada.</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> moto <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+Object<span class="token punctuation">.</span><span class="token function">defineProperties</span><span class="token punctuation">(</span>moto<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token object-property">velocidade:</span> <span class="token punctuation">{</span>
+    <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_velocidade<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">set</span><span class="token punctuation">(</span>valor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>_velocidade <span class="token operator">=</span> <span class="token string">'Velocidade '</span> <span class="token operator">+</span> valor<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+moto<span class="token property">.velocidade</span> <span class="token operator">=</span> <span class="token float">200</span><span class="token punctuation">;</span>
+moto<span class="token property">.velocidade</span><span class="token punctuation">;</span>
+<span class="token comment">// Velocidade 200</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section>
+<section data-slide="7"><div><h2>Object.getOwnPropertyDescriptors(obj)</h2>
+<p>Lista todos os métodos e propriedades de um objeto, com as suas devidas configurações.</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js">Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptors</span><span class="token punctuation">(</span>Array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Lista com métodos e propriedades e Array</span>
+
+Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptors</span><span class="token punctuation">(</span>Array<span class="token property">.prototype</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Lista com métodos e propriedades do protótipo de Array</span>
+
+Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span><span class="token special">window</span><span class="token punctuation">,</span> <span class="token string">'innerHeight'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Puxa de uma única propriedade</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section>
+<section data-slide="8"><div><h2>Object.keys(obj), Object.values(obj) Object.entries(obj)</h2>
+<p><code>Object.keys(obj)</code> retorna uma array com as chaves de todas as propriedades diretas e enumeráveis do objeto. <code>Object.values(obj)</code> retorna uma array com os valores do objeto. <code>Object.entries(obj)</code> retorna uma array com array's contendo a chave e o valor.</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js">Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>Array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// [] vazia, pois não possui propriedades enumeráveis</span>
+
+<span class="token keyword">const</span> carro <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token object-property">marca:</span> <span class="token string">'Ford'</span><span class="token punctuation">,</span>
+  <span class="token object-property">ano:</span> <span class="token float">2018</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>carro<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ['marca', 'ano']</span>
+Object<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span>carro<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ['Ford', 2018]</span>
+Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>carro<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// [['marca', 'Ford'], ['ano', 2018]]</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section>
+<section data-slide="9"><div><h2>Object.getOwnPropertyNames(obj)</h2>
+<p>Retorna uma array com todas as propriedades diretas do objeto (não retorna as do protótipo).</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js">Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyNames</span><span class="token punctuation">(</span>Array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ['length', 'name', 'prototype', 'isArray', 'from', 'of']</span>
+
+Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyNames</span><span class="token punctuation">(</span>Array<span class="token property">.prototype</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// [..., 'filter', 'map', 'every', 'some', 'reduce', ...]</span>
+
+<span class="token keyword">const</span> carro <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token object-property">marca:</span> <span class="token string">'Ford'</span><span class="token punctuation">,</span>
+  <span class="token object-property">ano:</span> <span class="token float">2018</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyNames</span><span class="token punctuation">(</span>carro<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ['marca', 'ano']</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section>
+<section data-slide="10"><div><h2>Object.getPrototypeOf() e Object.is()</h2>
+<p><code>Object.getPrototypeOf()</code>, retorna o protótipo do objeto. Object.is(obj1, obj2) verifica se os objetos são iguais e retorna true ou false.</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> frutas <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Banana'</span><span class="token punctuation">,</span> <span class="token string">'Pêra'</span><span class="token punctuation">]</span>
+Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>frutas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// String</span>
+
+<span class="token keyword">const</span> frutas1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Banana'</span><span class="token punctuation">,</span> <span class="token string">'Pêra'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> frutas2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Banana'</span><span class="token punctuation">,</span> <span class="token string">'Pêra'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span>frutas1<span class="token punctuation">,</span> frutas2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section>
+<section data-slide="11"><div><h2>Object.freeze(), Object.seal(), Object.preventExtensions()</h2>
+<p><code>Object.freeze()</code> impede qualquer mudança nas propriedades. <code>Object.seal()</code> previne a adição de novas propriedades e impede que as atuais sejam deletadas. <code>Object.preventExtensions()</code> previne a adição de novas propriedades.</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> carro <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token object-property">marca:</span> <span class="token string">'Ford'</span><span class="token punctuation">,</span>
+  <span class="token object-property">ano:</span> <span class="token float">2018</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+Object<span class="token punctuation">.</span><span class="token function">freeze</span><span class="token punctuation">(</span>carro<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">seal</span><span class="token punctuation">(</span>carro<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">preventExtensions</span><span class="token punctuation">(</span>carro<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>carro<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Object<span class="token punctuation">.</span><span class="token function">isSealed</span><span class="token punctuation">(</span>carro<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Object<span class="token punctuation">.</span><span class="token function">isExtensible</span><span class="token punctuation">(</span>carro<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section>
+<section data-slide="12"><div><h2>Propriedades e Métodos do Protótipo</h2>
+<p>Já que tudo em JavaScript é objeto, as propriedades abaixo estão disponíveis em todos os objetos criados a partir de funções construtoras. <code>{}.constructor</code> retorna a função construtora do objeto.</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> frutas <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Banana'</span><span class="token punctuation">,</span> <span class="token string">'Uva'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+frutas<span class="token property">.constructor</span><span class="token punctuation">;</span> <span class="token comment">// Array</span>
+
+<span class="token keyword">const</span> frase <span class="token operator">=</span> <span class="token string">'Isso é uma String'</span><span class="token punctuation">;</span>
+frase<span class="token property">.constructor</span><span class="token punctuation">;</span> <span class="token comment">// String</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section>
+<section data-slide="13"><div><h2>{}.hasOwnProperty('prop') e {}.propertyIsEnumerable('prop')</h2>
+<p>Verifica se possui a propriedade e retorna true. A propriedade deve ser direta do objeto e não do protótipo. O <code>{}.propertyIsEnumerable()</code> verifica se a propriedade é enumerável.</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> frutas <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Banana'</span><span class="token punctuation">,</span> <span class="token string">'Uva'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+frutas<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'map'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+Array<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'map'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+Array<span class="token property">.prototype</span><span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'map'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+Array<span class="token property">.prototype</span><span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'map'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+<span class="token special">window</span><span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'innerHeight'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section>
+<section data-slide="14"><div><h2>{}.isPrototypeOf(valor)</h2>
+<p>Verifica se é o protótipo do valor passado.</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> frutas <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Banana'</span><span class="token punctuation">,</span> <span class="token string">'Uva'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+Array<span class="token property">.prototype</span><span class="token punctuation">.</span><span class="token function">isPrototypeOf</span><span class="token punctuation">(</span>frutas<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section>
+<section data-slide="15"><div><h2>{}.toString()</h2>
+<p>Retorna o tipo do objeto. O problema é toString() ser uma função dos protótipos de Array, String e mais. Por isso é comum utilizarmos a função direto do <code>Object.prototype.toString.call(valor)</code>.</p>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> frutas <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Banana'</span><span class="token punctuation">,</span> <span class="token string">'Uva'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+frutas<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'Banana,Uva'</span>
+<span class="token keyword">typeof</span> frutas<span class="token punctuation">;</span> <span class="token comment">// object</span>
+Object<span class="token property">.prototype</span><span class="token property">.toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>frutas<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [object Array]</span>
+
+<span class="token keyword">const</span> frase <span class="token operator">=</span> <span class="token string">'Uma String'</span><span class="token punctuation">;</span>
+frase<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'Uma String'</span>
+<span class="token keyword">typeof</span> frase<span class="token punctuation">;</span> <span class="token comment">// string</span>
+Object<span class="token property">.prototype</span><span class="token property">.toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>frase<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [object String]</span>
+
+<span class="token keyword">const</span> carro <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token object-property">marca:</span> <span class="token string">'Ford'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+carro<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [object Object]</span>
+<span class="token keyword">typeof</span> carro<span class="token punctuation">;</span> <span class="token comment">// object</span>
+Object<span class="token property">.prototype</span><span class="token property">.toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>carro<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [object Object]</span>
+
+<span class="token keyword">const</span> li <span class="token operator">=</span> <span class="token special">document</span><span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> li<span class="token punctuation">;</span> <span class="token comment">// object</span>
+Object<span class="token property">.prototype</span><span class="token property">.toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>li<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [object NodeList]</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section>
+<section data-slide="16"><div><h2>Exercícios</h2>
+<div class="code-toolbar"><pre class=" language-js"><code class=" language-js"><span class="token comment">// Crie uma função que verifique</span>
+<span class="token comment">// corretamente o tipo de dado</span>
+
+<span class="token comment">// Crie um objeto quadrado com</span>
+<span class="token comment">// a propriedade lados e torne</span>
+<span class="token comment">// ela imutável</span>
+
+<span class="token comment">// Previna qualquer mudança</span>
+<span class="token comment">// no objeto abaixo</span>
+<span class="token keyword">const</span> configuracao <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token object-property">width:</span> <span class="token float">800</span><span class="token punctuation">,</span>
+  <span class="token object-property">height:</span> <span class="token float">600</span><span class="token punctuation">,</span>
+  <span class="token object-property">background:</span> <span class="token string">'#333'</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Liste o nome de todas</span>
+<span class="token comment">// as propriedades do</span>
+<span class="token comment">// protótipo de String e Array</span>
+</code></pre><div class="toolbar"><div class="toolbar-item"><a>Copiar</a></div></div></div>
+</div></section></div>
+
+    <nav class="slide-nav">
+      <a href="https://www.origamid.com/slide/javascript-completo-es6/#slide" data-nav="prev" data-slidenav="1" style="opacity: 0;">Anterior</a>
+      <span data-nav="paginas">
+        <span data-nav="atual">1</span> /
+        <span data-nav="total">16</span>
+      </span>
+      <a href="https://www.origamid.com/slide/javascript-completo-es6/#slide2" data-nav="next" data-slidenav="2" style="opacity: 1;">Próximo</a>
+    </nav>
+  </div>
+
+  <div class="helper active">
+    <div class="helper-item">
+      <span class="tecla">ESC</span>
+      <span class="tecla-title">Inicia Slide</span>
+    </div>
+    <div class="helper-item">
+      <span class="tecla">Seta -&gt;/&lt;- </span>
+          <span class="tecla-title">Navegação Slide</span>
+    </div>
+    <div class="helper-item">
+      <span class="tecla">SHIFT + Seta -&gt;/&lt;- </span>
+          <span class="tecla-title">Muda a Aula</span>
+    </div>
+    <div class="helper-item">
+      <span class="tecla">H</span>
+      <span class="tecla-title">Fecha/Abre Helper</span>
+    </div>
+  </div>
+
+  <script src="./0408-function_files/plugins.min.js.download"></script>
+  <script src="./0408-function_files/main.min.js.download"></script>
+
+
+</body><div id="b0ac4929-6f6c-40e7-b9f3-ee4efa069549" style="display: block !important; z-index: 2147483647 !important;"></div></html>
